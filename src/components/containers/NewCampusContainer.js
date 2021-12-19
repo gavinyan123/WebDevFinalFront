@@ -1,83 +1,70 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { NewCampusView } from "../views";
-import { addCampusThunk } from "../../thunks";
-/*fetchCampusThunk,*/
-class NewCampusContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      address: "",
-      description: "",
-      imageUrl: "",
-      isValidName: false,
-      errors: {},
-    };
-  }
+import { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-  handleChange = (e) => {
-    if (e.target.name === "name") {
-      this.setState({ name: e.target.value }, this.validateName);
-    } else {
+import NewCampusView from '../views/NewCampusView';
+import { addCampusThunk } from '../../store/thunks';
+
+
+class NewCampusContainer extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+          name: "", 
+          address: "", 
+          description: "",
+          redirect: false,
+          redirectId: null
+        };
+    }
+
+    handleChange = event => {
       this.setState({
-        [e.target.name]: e.target.value,
+        [event.target.name]: event.target.value
       });
     }
-  };
 
-  validateName = () => {
-    const { name } = this.state;
-    let errors = { ...this.state.errors };
-    // set a valid boolean to true
-    let isValidName = true;
-    // check if the value is valid
-    if (name.length < 2) {
-      // if not, set the value to false and add error message
-      isValidName = false;
-      errors.name = "Invalid campus name";
+    handleSubmit = async event => {
+        event.preventDefault();
+
+        let campus = {
+            name: this.state.name,
+            address: this.state.address,
+            description: this.state.description
+        };
+        
+        let newCampus = await this.props.addCampus(campus);
+
+        this.setState({
+          name: "", 
+          address: "", 
+          description: "", 
+          redirect: true,
+          redirectId: newCampus.id
+        });
     }
-    //
-    // setstate with isValidName
-    if (isValidName) {
-      errors.name = "valid name";
+
+    componentWillUnmount() {
+        this.setState({redirect: false, redirectId: null});
     }
-    this.setState({ isValidName, errors });
-  };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    if (this.state.isValidName) this.props.addCampus(this.state);
-  };
-
-  render() {
-    return (
-      <>
-        {/* Can potentially be extracted into its own ErrorMessage component */}
-        {this.state.isValidName ? "" : this.state.errors.name}
-        <NewCampusView
-          name={this.state.name}
-          address={this.state.address}
-          description={this.state.description}
-          imageUrl={this.state.imageUrl}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
-      </>
-    );
-  }
+    render() {
+        if(this.state.redirect) {
+          return (<Redirect to={`/campus/${this.state.redirectId}`}/>)
+        }
+        return (
+          <NewCampusView 
+            handleChange = {this.handleChange} 
+            handleSubmit={this.handleSubmit}      
+          />
+        );
+    }
 }
 
-//mapState
-const mapDispatch = (dispatch, ownProps) => {
-  return {
-    addCampus: (campus) => dispatch(addCampusThunk(campus, ownProps)),
-  };
-};
-
-NewCampusContainer.propTypes = {
-  addCampus: PropTypes.func.isRequired,
-};
+const mapDispatch = (dispatch) => {
+    return({
+        addCampus: (campus) => dispatch(addCampusThunk(campus)),
+    })
+}
 
 export default connect(null, mapDispatch)(NewCampusContainer);

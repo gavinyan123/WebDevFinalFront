@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { deleteCampus } from "../../store/actions/actionCreators";
 
 const AllCampusesView = (props) => {
   if (!props.allCampuses.length) {
@@ -14,8 +15,12 @@ const AllCampusesView = (props) => {
             <h1>{campus.name}</h1>
           </Link>
           <p>{campus.description}</p>
+          <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
         </div>
       ))}
+      <Link to="/newcampus">
+        <button>Add New Campus</button>
+      </Link>
     </div>
   );
 };
