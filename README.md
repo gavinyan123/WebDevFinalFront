@@ -1,3 +1,5 @@
+Frontend for CRUD CSCI 39548 Final Project
+Backend for CRUD CSCI 39548 Final Project: https://github.com/Yancey-Ko/starter-server
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
