@@ -31,7 +31,7 @@ const useStyles = makeStyles( () => ({
   
 }));
 
-const NewStudentView = (props) => {
+const EditStudentView = (props) => {
   const {handleChange, handleSubmit } = props;
   const classes = useStyles();
 
@@ -40,7 +40,7 @@ const NewStudentView = (props) => {
       <div className={classes.formContainer}>
         <div className={classes.formTitle}>
           <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-            New Student
+            Edit Student
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
@@ -69,7 +69,7 @@ const NewStudentView = (props) => {
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus ID: </label>
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>campusId: </label>
           <input type="text" name="campusId" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
@@ -86,4 +86,4 @@ const NewStudentView = (props) => {
   )
 }
 
-export default NewStudentView;
+export default EditStudentView;

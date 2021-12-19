@@ -11,6 +11,7 @@ class NewCampusContainer extends Component {
         super(props);
         this.state = {
           name: "", 
+          imageUrl: "https://www.brooklyn.cuny.edu/web/abo_misc/200304_Campus_Aerial_738x330.jpg",
           address: "", 
           description: "",
           redirect: false,
@@ -29,6 +30,7 @@ class NewCampusContainer extends Component {
 
         let campus = {
             name: this.state.name,
+            imageUrl: this.state.imageUrl,
             address: this.state.address,
             description: this.state.description
         };
@@ -37,6 +39,7 @@ class NewCampusContainer extends Component {
 
         this.setState({
           name: "", 
+          imageUrl: "https://www.brooklyn.cuny.edu/web/abo_misc/200304_Campus_Aerial_738x330.jpg",
           address: "", 
           description: "", 
           redirect: true,

@@ -12,6 +12,9 @@ class NewStudentContainer extends Component {
         this.state = {
           firstname: "", 
           lastname: "", 
+          email: "",
+          imageUrl: "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg",
+          gpa: "",
           campusId: null, 
           redirect: false, 
           redirectId: null
@@ -30,6 +33,9 @@ class NewStudentContainer extends Component {
         let student = {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
+            email: this.state.email,
+            imageUrl: this.state.imageUrl,
+            gpa: this.state.gpa,
             campusId: this.state.campusId
         };
         
@@ -38,6 +44,9 @@ class NewStudentContainer extends Component {
         this.setState({
           firstname: "", 
           lastname: "", 
+          email: "",
+          imageUrl: "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg",
+          gpa: "",
           campusId: null, 
           redirect: true, 
           redirectId: newStudent.id
