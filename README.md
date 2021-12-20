@@ -1,4 +1,4 @@
-#starter-client
+#starter-client<br/>
 Yancey Ko - Yancey-Ko <br/>Gavin Yan - gavinyan123 <br/>Stanley Wong - swong1999<br/>
 Frontend for CRUD CSCI 39548 Final Project: https://github.com/gavinyan123/WebDevFinalFront<br/>
 Backend for CRUD CSCI 39548 Final Project: https://github.com/Yancey-Ko/starter-server
