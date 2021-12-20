@@ -3,6 +3,7 @@ const CampusView = (props) => {
   return (
     <div>      
       <h1>{campus.name}</h1>
+      <p1>{campus.address}</p1>
       <p>{campus.description}</p>
       <ul>
       {campus.students.map( student => {

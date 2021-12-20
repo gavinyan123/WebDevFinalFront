@@ -32,10 +32,10 @@ const useStyles = makeStyles(theme => ({
   links:{
     textDecoration: 'none',
   }
-
 }));
 
 const HomePageView = () => {
+  
   const classes = useStyles();
   return (
     <div className={classes.root}>
