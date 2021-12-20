@@ -13,7 +13,7 @@ const AllStudentsView = (props) => {
         <Link to="/campuses">
           <button>All Campuses</button>
         </Link>
-        <Link to="/newcampus">
+        <Link to="/newstudent">
           <button>Add New Student</button>
         </Link>
     </div>
@@ -39,7 +39,7 @@ const AllStudentsView = (props) => {
           <Link to="/campuses">
             <button>All Campuses</button>
           </Link>
-          <Link to="/newcampus">
+          <Link to="/newstudent">
             <button>Add New Student</button>
           </Link>
           </div>
